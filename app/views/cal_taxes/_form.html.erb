@@ -1,0 +1,25 @@
+<%= form_for(@cal_tax) do |f| %>
+  <% if @cal_tax.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cal_tax.errors.count, "error") %> prohibited this cal_tax from being saved:</h2>
+
+      <ul>
+      <% @cal_tax.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= render "calc" %>
+  <div class="field">
+    <%= f.label :withtax %><br>
+    <%= f.number_field :withtax %>
+  </div>
+  <div class="field">
+    <%= f.label :withouttax %><br>
+    <%= f.number_field :withouttax %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

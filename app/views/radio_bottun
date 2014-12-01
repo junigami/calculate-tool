@@ -1,0 +1,26 @@
+!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>title sample</title>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+<![endif]-->
+<style>
+  article, aside, dialog, figure, footer, header,
+  hgroup, menu, nav, section { display: block; }
+</style>
+</head>
+<body>
+<form method="post" action="example.cgi">
+
+<p>税抜価格<br>
+<input type="radio" name="q1" value="税込価格"> 税込価格
+<input type="radio" name="q1" value="税抜価格"> 税抜価格
+</p>
+
+<input type="text" name="q1" size="10" maxlength="10">
+
+</body>
+</html>

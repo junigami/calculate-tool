@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>計算画面</title>
+        <style>
+        </style>
+        <link rel="stylesheet" href="colorbox.css" />
+        <link rel="stylesheet" href="custom.css" />
+        <script src="jquery.min.js"></script>
+        <script src="jquery.cookie.js"></script>
+        <script src="jquery.colorbox.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <p>税込価格</p>
+            <p class="includingTax"></p>
+            <br />
+            <p>税抜価格</p>
+            <p class="excludingTax"></p>
+            <br />
+            <button type="button" class="closeWindow">上記の税抜き価格で決定</button>
+        </div>
+        <script>
+            $(document).ready(function(){
+                var includingTaxPrice = $.cookie('price');
+                $(".includingTax").text(includingTaxPrice + '円');
+
+                var excludingTaxPrice = Math.floor(Number(includingTaxPrice) / 1.08);  
+                $(".excludingTax").text(String(excludingTaxPrice) + '円');
+
+                $.cookie('price', excludingTaxPrice);
+            });
+
+            $('.closeWindow').click(function() {
+                console.log($.cookie('price'));
+            });
+        </script>
+    </body>
+</html>

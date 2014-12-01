@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Withtax:</strong>
+  <%= @cal_tax.withtax %>
+</p>
+
+<p>
+  <strong>Withouttax:</strong>
+  <%= @cal_tax.withouttax %>
+</p>
+
+<%= link_to 'Edit', edit_cal_tax_path(@cal_tax) %> |
+<%= link_to 'Back', cal_taxes_path %>

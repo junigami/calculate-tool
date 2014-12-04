@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.min
+//= require jquery.colorbox
+//= require jquery.cookie
 //= require turbolinks
-//= require_tree .

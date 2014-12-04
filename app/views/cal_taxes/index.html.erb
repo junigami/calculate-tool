@@ -6,23 +6,63 @@
         <style>
             body{font:12px/1.2 Verdana, sans-serif; padding:0 10px;}
             a:link, a:visited{text-decoration:none; color:#416CE5; border-bottom:1px solid #416CE5;}
-            h2{font-size:13px; margin:15px 0 0 0;}</style>
-    </head>
+            h2{font-size:13px; margin:15px 0 0 0;}
+        </style>
+</head>
+
     <body>
         <form action="#" method="POST" id="shopInfo">
-            <label for="includingTax">税込み価格を入力してください</label>
+            <label for="includingTax">税抜価格</label>
             <input name="includingTax" class="includingTax" type="textbox" placeholder="ex) 10000">円
-            <p><a class="excludingTax" href="cal_taxes/calc.html">上記の税抜き価格を計算する</a></p>
-        </form>
-          <script>
-            $('.excludingTax').click(function() {
-                $.cookie('price', $('#shopInfo [name="includingTax"]').val());
+            <input type="button" class="excludingTax" value="税込価格から税抜価格を計算する" href='#'>     
+        </form>        
+
+       <script>
+            $(document).ready(function(){
+                var tmpl = $("#colorbox_tmpl");
+                $(".excludingTax").colorbox({rel:'excludingTax', html: tmpl});
             });
         </script>
+
+
+<script id="colorbox_tmpl" type="text/x-spmkt">
+    <head>
+        <meta charset='utf-8'/>
+        <title>計算画面</title>
+        <style>
+            body{font:12px/1.2 Verdana, sans-serif; padding:0 10px;}
+            a:link, a:visited{text-decoration:none; color:#416CE5; border-bottom:1px solid #416CE5;}
+            h2{font-size:12px; margin:15px 0 0 0;}
+        </style>
+        <link rel="stylesheets" href="/asset/stylesheets/colorbox.css"/>
+        <link rel="stylesheets" href="/asset/stylesheets/custom.css"/>
         <script>
-      
-                $(".excludingTax").colorbox({rel:'excludingTax'});
-      
+            var excludingTaxPrice;
+
+            $("#calcExcludingTax").on("click", function(){
+                var includingTaxPrice = $("#includingTax2").val()
+                excludingTaxPrice = Math.floor(Number(includingTaxPrice) / 1.08);  
+                // $(".excludingTax2").text("¥" + String(excludingTaxPrice));
+                $(".includingTax").val(excludingTaxPrice);
+                $('#cboxClose').click()
+            });
+
         </script>
-    </body>
+        <div class="wrapper">
+            <p>税込価格</p>
+            <input type="textbox" id="includingTax2" class="includngTax2" placeholder="ex) 10000">
+            <!-- <p class="includingTax2"</p> -->
+            <br />
+            <br />
+            <br />
+            <!-- <p>税抜価格</p>
+            <p class="excludingTax2"></p>
+            <br /> -->
+            <input type ="button" class="closeWindow" value="税抜価格を計算する" id="calcExcludingTax">
+            
+           
+        </div>
+</script>         
+<body>
+
 </html>

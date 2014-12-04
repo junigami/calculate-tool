@@ -26,8 +26,19 @@
                 $(".excludingTax").colorbox({
                     rel:'excludingTax', 
                     html: tmpl.html(),
-                    closeButton: false});
-            });
+                    closeButton: false,
+                    onComplete:function(){
+                        var priceFromForm = $(".includingTax").val()
+                        $("#includingTax2").val(priceFromForm);
+
+                        $("#calcExcludingTax").on("click", function(){
+                            var includingTaxPrice = $("#includingTax2").val()
+                            excludingTaxPrice = Math.floor(Number(includingTaxPrice) / 1.08);  
+                            $(".includingTax").val(excludingTaxPrice);
+                            });
+                        }
+                    });
+                });
         </script>
         <script id="colorbox_tmpl" type="text/x-spmkt">
         <div class="wrapper">
@@ -37,13 +48,8 @@
             <br />
             <input type="button" class="closeWindow" value="税抜価格を計算する" id="calcExcludingTax" onClick="parent.$.colorbox.close();" href="#">
             </div>
-        <script>
-            $("#calcExcludingTax").on("click", function(){
-                var includingTaxPrice = $("#includingTax2").val()
-                excludingTaxPrice = Math.floor(Number(includingTaxPrice) / 1.08);  
-                $(".includingTax").val(excludingTaxPrice);
-            });
-            </script>
-        </script>               
+        </script>         
     </body>
 </html>
+
+
